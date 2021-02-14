@@ -30,11 +30,7 @@ jobs:
       with:
         python-versions: 'cp36-cp36m cp37-cp37m cp38-cp38 cp39-cp39'
         build-requirements: 'cython numpy pandas pybind11'  
-    - name: Build manylinux Python wheels_2_24
-      uses: RalfG/python-wheels-manylinux-build@v0.3.3-manylinux_2_24_x86_64
-      with:
-        python-versions: 'cp36-cp36m cp37-cp37m cp38-cp38 cp39-cp39'
-        build-requirements: 'cython numpy pandas pybind11' 
+
     - name: Publish wheels to PyPI
       env:
        TWINE_USERNAME: __token__
