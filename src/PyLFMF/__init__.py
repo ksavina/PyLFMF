@@ -53,4 +53,4 @@ def fit(data):
     for obs in data:
         obj = __fit(obs)
         buf.append((obj.A, obj.E, obj.P, obj.method, obj.status))
-    return np.array([A, E, P, method, status], dtype=dt_out)
+    return np.array(buf, dtype=dt_out)
