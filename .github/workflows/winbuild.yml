@@ -38,6 +38,9 @@ jobs:
         name: Install Python
         with:
           python-version: '3.8'
+      
+      - name: Install cibuildwheel
+        run: python -m pip install pybind11 numpy cpython pandas
 
       - name: Build sdist
         run: python setup.py sdist
