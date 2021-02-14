@@ -22,7 +22,6 @@ jobs:
         sudo pip install build
         sudo python -m pip install pybind11
         sudo apt install python3-venv
-        sudo apt install python3-dev
     - name: Build wheel
       run: python -m build
     - name: Upload wheels
