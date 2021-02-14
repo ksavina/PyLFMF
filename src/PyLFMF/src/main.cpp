@@ -1,6 +1,9 @@
 #include <pybind11/pybind11.h>
 #include "../include/LFMF.h"
 
+#define STRINGIFY(x) #x
+#define MACRO_STRINGIFY(x) STRINGIFY(x)
+
 namespace py = pybind11;
 
 PYBIND11_MODULE(PyLFMF, m)
