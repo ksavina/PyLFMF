@@ -33,7 +33,7 @@ def frompandas(df, mapper=None):
     if not isinstance(df, pd.DataFrame):
         raise ValueError(err_msg) 
     try:
-        if mapper:
+        if mapper is not None:
             buf = []
             for arg in arguments:
                 buf.append(mapper[arg])
