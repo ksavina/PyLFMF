@@ -10,8 +10,10 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [3.5, 3.6, 3.7, 3.8, 3.9, 'pypy-3.6', 'pypy-3.7']
+#         os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [windows-latest]
+#         python-version: [3.5, 3.6, 3.7, 3.8, 3.9, 'pypy-3.6', 'pypy-3.7']
+        python-version: [3.8, 3.9]
 
     steps:
     - uses: actions/checkout@v2
@@ -27,8 +29,8 @@ jobs:
     - name: Create directory
       run: mkdir wheelhouse
     - name: Build
-      run: python -m build -o ./wheelhouse/
-    - name: Upload building results
-      uses: actions/upload-artifact@v2
-      with:
-        path: wheelhouse/*.whl
+      run: python -m build -o .\wheelhouse\
+#     - name: Upload building results
+#       uses: actions/upload-artifact@v2
+#       with:
+#         path: wheelhouse/*.whl
