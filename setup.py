@@ -21,7 +21,7 @@ ext_modules = [
     Pybind11Extension("PyLFMF",
         ["src/main.cpp", "src/Airy.cpp", "src/FlatEarthCurveCorrection.cpp",
         "src/LFMF.cpp", "src/ResidueSeries.cpp", "src/ValidateInputs.cpp",
-        "src/WiRoot.cpp", "src/werf.cpp"]
+        "src/WiRoot.cpp", "src/werf.cpp"],
         define_macros = [('VERSION_INFO', __version__)],
         ),
 ]
