@@ -46,4 +46,11 @@ def frompandas(df, mapper=None):
     return df
             
 def __fit(rec):
-    return run([b[arg].item() for arg in arguments])
+    return run([rec[arg].item() for arg in arguments])
+  
+def fit(data):
+    buf = []
+    for obs in data:
+        obj = __fit(obs)
+        buf.append((obj.A, obj.E, obj.P, obj.method, obj.status))
+    return np.array([A, E, P, method, status], dtype=dt_out)
