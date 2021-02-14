@@ -22,7 +22,7 @@ jobs:
         sudo pip3 install build
         sudo python3 -m pip install pybind11
     - name: Build wheel
-      run: python -m build
+      run: python3 -m build
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
