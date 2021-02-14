@@ -36,4 +36,4 @@ jobs:
        TWINE_USERNAME: __token__
        TWINE_PASSWORD: ${{ secrets.pypi_password }}
       run: |
-       twine upload dist/*-manylinux*.whl_2_24
+       twine upload dist/*-manylinux*.whl
