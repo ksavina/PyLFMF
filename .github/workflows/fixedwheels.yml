@@ -40,6 +40,7 @@ jobs:
       # For example, pypy2 and pypy3
       matrix:         
         python-version: [3.5, 3.6, 3.7, 3.8, 3.9]
+        archs: [x64, x86]
 
     steps:
     - uses: actions/checkout@v2
@@ -47,6 +48,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+        architecture: ${{ matrix.archs }} $
     # You can test your matrix by printing the current Python version
     - name: Display Python version
       run: python -c "import sys; print(sys.version)"
@@ -65,8 +67,7 @@ jobs:
     name: Upload if release
     needs: [build, build-win]
     runs-on: ubuntu-latest
-    if: github.event_name == 'release' && github.event.action == 'published'
-
+  
     steps:
     - uses: actions/setup-python@v2
 
