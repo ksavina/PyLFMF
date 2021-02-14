@@ -1,29 +1,23 @@
-name: Python
+name: Python package
 
 on: [push]
 
 jobs:
   build:
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
+      # You can use PyPy versions in python-version.
+      # For example, pypy2 and pypy3
       matrix:
-        os: [ubuntu-latest]
-        python-version: [3.5, 3.6, 3.7, 3.8, 3.9]
+        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        sudo python3 -m pip install --upgrade pip
-        sudo pip install build
-        sudo python3 -m pip install pybind11
-    - name: Build wheel
-      run: python3 -m build
-    - name: Upload wheels
-      uses: actions/upload-artifact@v2
-      with:
-        path: wheelhouse/*.whl
+    # You can test your matrix by printing the current Python version
+    - name: Display Python version
+      run: python -c "import sys; print(sys.version)"
