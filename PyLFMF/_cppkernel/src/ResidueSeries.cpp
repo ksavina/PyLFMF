@@ -1,5 +1,4 @@
 #include "../include/LFMF.h"
-#include <iostream>
 /*=============================================================================
  |
  |  Description:  Calculates the groundwave field strength using the
@@ -53,19 +52,27 @@ double ResidueSeries(double d__km, double k, double h_1__km, double h_2__km, dou
             W[i] = Airy(T[i] - yHigh, WONE, WAIT) / W1[i];
         else
             W[i] = complex<double>(1, 0);
-
+	    
+	if (i != 0) 
+        {
+            \if (((abs((G / GW).real())) + (abs((G / GW).imag()))) < 1.0e-9)  // when the new G is too small compared to its series sum
+            { 
+                // when the new G is too small compared to its series sum, it's ok to stop the loop
+                // because adding small number to a significant big one doesn't affect their sum.
+                //J1 = i;
+                break;
+            }
+        }
         // W[i] is the coefficient of the distance factor for the i-th
         W[i] /= (T[i] - (q*q)); // H_1(h_1)*H_1(h_2)/(t_i-q^2) eqn.26 from NTIA report 99-368
         G = W[i] * exp(-1.0*j*x*T[i]); // sum of exp(-j*x*t_i)*W[i] eqn.26 from NTIA report 99-368
         GW += G; // sum the series
-	std::cout << "Residuals GW: " << GW << "\n";
     }
 
     // field strength.  complex<double>(sqrt(PI/2)) = sqrt(pi)*e(-j*PI/4)
     complex<double> Ew = sqrt(x)*complex<double>(sqrt(PI / 2), -sqrt(PI / 2))*GW;
 
     double E_gw = abs(Ew); // take the magnitude of the result
-    std::cout << "ResSeriesReturn : " << E_gw << "\n";
     return E_gw;
 
 };
