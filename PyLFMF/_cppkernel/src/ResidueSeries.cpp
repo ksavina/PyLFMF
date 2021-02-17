@@ -55,7 +55,7 @@ double ResidueSeries(double d__km, double k, double h_1__km, double h_2__km, dou
 	    
 	if (i != 0) 
         {
-            \if (((abs((G / GW).real())) + (abs((G / GW).imag()))) < 1.0e-9)  // when the new G is too small compared to its series sum
+            if (((abs((G / GW).real())) + (abs((G / GW).imag()))) < 1.0e-9)  // when the new G is too small compared to its series sum
             { 
                 // when the new G is too small compared to its series sum, it's ok to stop the loop
                 // because adding small number to a significant big one doesn't affect their sum.
