@@ -26,6 +26,8 @@ def fromarray(data):
         data = rfn.unstructured_to_structured(data, dt_in)
     except:
         raise ValueError(err_msg)
+	if data.ndim == 1:
+	data = data.reshape(1, -1)
     return data
 
 
@@ -43,6 +45,8 @@ def frompandas(df, mapper=None):
     except:
         raise ValueError("Mapping column names has failed.")
     df = fromarray(df.to_numpy())
+    if df.ndim == 1:
+	df = df.reshape(1, -1)
     return df
             
   
