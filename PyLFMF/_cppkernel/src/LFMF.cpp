@@ -1,7 +1,6 @@
 #include "../include/LFMF.h"
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
-#include <iostream>
 namespace py = pybind11;
 
 /*=============================================================================
@@ -101,7 +100,6 @@ void LFMF(double * input_ptr, double * output_ptr)
     double E_0 = sqrt(ETA * (P_tx__watt * G_tx) / (4.0 * PI)) / d__km;  // V/km or mV/m
     
     E_gw = E_gw * E_0;
-    std::cout << "E_gw*E_0: " << E_gw << "\n";
     // Calculate the basic transmission loss using (derived using Friis Transmission Equation with Electric Field Strength)
     //      Pt     Gt * Pt * ETA * 4*PI * f^2
     // L = ---- = ---------------------------  and convert to dB
