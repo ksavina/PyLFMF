@@ -16,7 +16,7 @@ dt_in = np.dtype([
             ])
 
 dt_out = np.dtype([('A', np.double), ('E', np.double), ('P', np.double),
-                   ('method', np.double), ('status', np.double)])
+                   ('method', np.int), ('status', np.int)])
 
 def fromarray(data):
     if isinstance(data, list):
